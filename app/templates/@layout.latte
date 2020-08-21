@@ -3,6 +3,24 @@
 	{var $isHomepage = $presenter->getAction(true) === ':Project:Homepage:default'}
 
 	<!-- TODO NAVBAR -->
+	<div class="nav">
+
+		<ul class="sedondary-main">
+			<li><a n:href="Homepage:default" class="nav-link">O nás</a></li>
+			<li><a n:href="Homepage:sponsors" class="nav-link">Podporují nás</a></li>
+			<li><a n:href="Homepage:documents" class="nav-link">Dokumenty</a></li>
+			<li><a n:href="Homepage:contact" class="nav-link">Kontakt</a></li>
+			<li><a href="#" class="nav-link">Facebook</a></li>
+		</ul>
+
+		<ul class="navbar-main">
+			<li><a n:href="New:default" class="nav-link">Aktuality</a></li>
+			<li><a n:href="Homepage:fosterCare" class="nav-link">Pěstounská péče</a></li>
+			<li><a n:href="Homepage:withoutDebts" class="nav-link">Bez dluhů</a></li>
+			<li><a n:href="Service:default" class="nav-link">Aktivity a služby pro veřejnost</a></li>
+			<li><a n:href="Event:default" class="nav-link">Události</a></li>
+		</ul>
+	</div>
 
 	{include #content}
 	<footer>

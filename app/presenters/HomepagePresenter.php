@@ -11,4 +11,29 @@ final class HomepagePresenter extends BasePresenter
     {
 
     }
+
+    public function renderFosterCare(): void
+    {
+
+    }
+
+    public function renderWithoutDebts(): void
+    {
+
+    }
+
+    public function renderSponsors(): void
+    {
+
+    }
+
+    public function renderDocuments(): void
+    {
+
+    }
+
+    public function renderContact(): void
+    {
+
+    }
 }
