@@ -11,7 +11,8 @@
 		{ "type": "vcs", "url": "git@bitbucket.org:team_simple/adminmodule.git" },
 		{ "type": "vcs", "url": "git@bitbucket.org:team_simple/boxmodule.git" },
 		{ "type": "vcs", "url": "git@bitbucket.org:team_simple/gallerymodule.git" },
-		{ "type": "vcs", "url": "git@bitbucket.org:team_simple/newsmodule.git" }
+		{ "type": "vcs", "url": "git@bitbucket.org:team_simple/newsmodule.git" },
+		{ "type": "vcs", "url": "git@bitbucket.org:team_simple/filemodule.git" }
 	],
 	"autoload": {
 		"classmap": [
@@ -29,6 +30,7 @@
 		"simple-cms/box-module": "dev-master",
 		"simple-cms/gallery-module": "dev-master",
 		"simple-cms/news-module": "dev-master",
+		"simple-cms/file-module": "dev-master",
 		"ext-json": "*",
 		"nette/mail": "^3.1",
 		"nette/database": "^3.0",

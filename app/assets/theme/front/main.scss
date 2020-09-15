@@ -5,3 +5,45 @@ body {
   margin: 0;
   font-size: 16px;
 }
+
+nav {
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+  background-color: $white;
+
+  .top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .navbar-primary {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $primary;
+  }
+  .navbar-secondary {
+    font-size: 1rem;
+    font-weight: 400;
+    color: $gray-300;
+  }
+
+
+}
+
+header {
+  min-height: 400px;
+  height: 50vh;
+  width: 100vw;
+  background-image: url("/dist/img/header_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}

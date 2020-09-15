@@ -11,9 +11,14 @@ session:
 	expiration: 30 minutes
 
 services:
+	- App\Grid\IEventGridFactory
+	repository: App\Service\ProjectModelRepository
 	router: App\RouterFactory::createRouter
 
 parameters:
+	admin:
+		menu:
+			Události: [':Admin:Event:', calendar-check]
 	customTemplatesDir: %appDir%/templates/
 
 migrations:

@@ -3,24 +3,35 @@
 	{var $isHomepage = $presenter->getAction(true) === ':Project:Homepage:default'}
 
 	<!-- TODO NAVBAR -->
-	<div class="nav">
+	<nav class="navigation">
+		<i class="fas fa-bars"></i>
 
-		<ul class="sedondary-main">
-			<li><a n:href="Homepage:default" class="nav-link">O nás</a></li>
-			<li><a n:href="Homepage:sponsors" class="nav-link">Podporují nás</a></li>
-			<li><a n:href="Homepage:documents" class="nav-link">Dokumenty</a></li>
-			<li><a n:href="Homepage:contact" class="nav-link">Kontakt</a></li>
-			<li><a href="#" class="nav-link">Facebook</a></li>
-		</ul>
+		<div class="top-line">
+			<div class="navbar-brand">
+				<h1>Sociální centrum pro rodinu</h1>
+			</div>
+			<div class="navbar-logo">
+				<img src="{$basePath}/dist/img/logo.png" class="img-fluid" alt="Sociální centrum pro rodinu">
+			</div>
+			<ul class="navbar-secondary">
+				<li><a n:href="Homepage:default" class="nav-link">O nás</a></li>
+				<li><a n:href="Homepage:sponsors" class="nav-link">Podporují nás</a></li>
+				<li><a n:href="Homepage:documents" class="nav-link">Dokumenty</a></li>
+				<li><a n:href="Homepage:contact" class="nav-link">Kontakt</a></li>
+				<li><a href="https://www.facebook.com/scprorodinu" class="nav-link">Facebook</a></li>
+			</ul>
+		</div>
 
-		<ul class="navbar-main">
-			<li><a n:href="New:default" class="nav-link">Aktuality</a></li>
-			<li><a n:href="Homepage:fosterCare" class="nav-link">Pěstounská péče</a></li>
-			<li><a n:href="Homepage:withoutDebts" class="nav-link">Bez dluhů</a></li>
-			<li><a n:href="Service:default" class="nav-link">Aktivity a služby pro veřejnost</a></li>
-			<li><a n:href="Event:default" class="nav-link">Události</a></li>
-		</ul>
-	</div>
+		<div class="bottom-line">
+			<ul class="navbar-main">
+				<li><a n:href="New:default" class="nav-link">Aktuality</a></li>
+				<li><a n:href="Homepage:fosterCare" class="nav-link">Pěstounská péče</a></li>
+				<li><a n:href="Homepage:withoutDebts" class="nav-link">Bez dluhů</a></li>
+				<li><a n:href="Service:default" class="nav-link">Aktivity a služby pro veřejnost</a></li>
+				<li><a n:href="Event:default" class="nav-link">Události</a></li>
+			</ul>
+		</div>
+	</nav>
 
 	{include #content}
 	<footer>
@@ -61,4 +72,5 @@
 
 {block #foot}
 	<script src="{$basePath}/dist/front.bundle.js?{filemtime(WWW . '/dist/front.bundle.js')}" type="text/javascript"></script>
+	<script src="https://kit.fontawesome.com/150cafc137.js" crossorigin="anonymous"></script>
 {/block}
