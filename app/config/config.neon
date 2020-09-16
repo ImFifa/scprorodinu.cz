@@ -8,10 +8,11 @@ application:
 
 session:
 	debugger: true
-	expiration: 30 minutes
+	expiration: 14 days
 
 services:
 	- App\Grid\IEventGridFactory
+	- App\Grid\IServiceGridFactory
 	repository: App\Service\ProjectModelRepository
 	router: App\RouterFactory::createRouter
 
@@ -19,6 +20,7 @@ parameters:
 	admin:
 		menu:
 			Události: [':Admin:Event:', calendar-check]
+			Aktivity a služby: [':Admin:Service:', hand-heart]
 	customTemplatesDir: %appDir%/templates/
 
 migrations:

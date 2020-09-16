@@ -1,4 +1,4 @@
-/*CREATE TABLE IF NOT EXISTS `event_categories` (
+CREATE TABLE IF NOT EXISTS `event_categories` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(50) NOT NULL,
     PRIMARY KEY (`id`)
@@ -27,4 +27,3 @@ ALTER TABLE `event`
     ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
     ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`gategory_id`) REFERENCES `event_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-*/

@@ -6,6 +6,7 @@ use Nette\Database\Table\Selection;
 
 /**
  * @property-read \App\Model\EventModel $event
+ * @property-read \App\Model\ServiceModel $service
  * @property-read \App\Model\NewModel $new
  * @property-read \App\Model\GalleryModel $gallery
  * @property-read \App\Model\ImageModel $image
@@ -23,4 +24,9 @@ class ProjectModelRepository extends ModelRepository
         return $this->new->getTable()->where('public', 1)->count();
     }
 
+    public function getServicesForSelect(): array
+    {
+        return $this->service->getTable()->fetchPairs('id', 'name');
+
+    }
 }

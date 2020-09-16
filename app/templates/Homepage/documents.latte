@@ -1,2 +1,28 @@
 {block content}
-<h1 n:block=title>Dokumenty</h1>
+<section class="documents-page" id="documents-page">
+    <div class="container">
+        <h1 n:block="title">Dokumenty</h1>
+        {box documents}
+        <hr>
+
+        {if ($allFiles != NULL && $allFolders != NULL)}
+            {foreach $allFolders as $folder}
+            <h3>{$folder->name}</h3>
+            <ul>
+                {foreach $allFiles as $document}
+                    {if $document->folder_id === $folder->id}
+                        <li>
+                            <a target="_blank" href="{$basePath}/upload/files/{$folder->slug}/{$document->path}" class="btn btn-outline-secondary">
+                                <i class="fas fa-file{if ($document->type === 'pdf')}-pdf{/if}"></i> {$document->name}
+                            </a>
+                        </li>
+                    {/if}
+                {/foreach}
+            </ul>
+            {/foreach}
+        {else}
+            <h3>Aktuálně nejsou na webu nahrány žádné dokumenty.</h3>
+        {/if}
+
+    </div>
+</section>

@@ -1,2 +1,21 @@
 {block content}
-<h1 n:block=title>Aktivity a služby pro veřejnost</h1>
+<section class="services-page" id="services-page">
+    <div class="container">
+        <h1 n:block="title">Aktivity a služby pro veřejnost</h1>
+        <hr>
+        {foreach $services as $service}
+            <a n:href="Service:show $service->slug">
+                <div class="new hover14">
+                    {if isset($service->cover)}
+                        <figure><img src="{$basePath}/upload/services/{$service->id}/{$service->cover}" class="lazyload img-fluid" alt="{$service->name}"></figure>
+                    {/if}
+                    <div class="content">
+                        <h3>{$service->name}</h3>
+                        <p class="new-content">{$service->content|noescape|truncate:350, '...'}</p>
+                    </div>
+                </div>
+            </a>
+            <hr>
+        {/foreach}
+    </div>
+</section>

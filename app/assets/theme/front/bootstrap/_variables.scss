@@ -73,8 +73,8 @@ $colors: map-merge(
                 $colors
 );
 
-$primary:       $red !default;
-$secondary:     #C3444B !default;
+$primary:       #ef801c !default;
+$secondary:     #009846 !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -400,8 +400,8 @@ $table-border-level:          -6 !default;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y:         .8rem !default;
-$input-btn-padding-x:         1.6rem !default;
+$input-btn-padding-y:         .6rem !default;
+$input-btn-padding-x:         1.2rem !default;
 $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
@@ -955,7 +955,7 @@ $badge-pill-border-radius:          10rem !default;
 // Padding applied to the modal body
 $modal-inner-padding:               1rem !default;
 
-// Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
+// Margin between elements in footer, must be lower than or equal to 1 * $modal-inner-padding
 $modal-footer-margin-between:       .5rem !default;
 
 $modal-dialog-margin:               .5rem !default;

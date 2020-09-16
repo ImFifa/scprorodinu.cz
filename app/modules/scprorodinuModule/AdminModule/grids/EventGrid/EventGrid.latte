@@ -1,6 +1,6 @@
 {extends $control->baseGridTemplate}
 
-{define body-cell-event_name}
+{define body-cell-name}
     <td>
         {$record->name}
     </td>
@@ -8,17 +8,7 @@
 
 {define body-cell-updated}
     <td class="text-right">
-        {$record->updated|date:'d.m.Y'}
-    </td>
-{/define}
-
-{define body-cell-public}
-    <td class="text-center">
-        {if $record->public}
-            <span class="text-success"><i class="mdi mdi-earth"></i> Veřejný</span>
-        {else}
-            <span class="text-danger"><i class="mdi mdi-lock"></i> Neveřejný</span>
-        {/if}
+        {$record->date|date:'d.m.Y'}
     </td>
 {/define}
 
@@ -30,6 +20,16 @@
             </a>
         {else}
             <span class="text-muted">žádná</span>
+        {/if}
+    </td>
+{/define}
+
+{define body-cell-public}
+    <td class="text-center">
+        {if $record->public}
+            <span class="text-success"><i class="mdi mdi-earth"></i> Veřejný</span>
+        {else}
+            <span class="text-danger"><i class="mdi mdi-lock"></i> Neveřejný</span>
         {/if}
     </td>
 {/define}

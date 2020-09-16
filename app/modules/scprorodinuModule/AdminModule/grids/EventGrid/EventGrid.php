@@ -15,12 +15,11 @@ class EventGrid extends BaseGrid
 
         parent::build();
 
-        $this->addColumn('event_name', 'Název');
+        $this->addColumn('name', 'Název');
+        $this->addColumn('date', 'Datum konání');
         $this->addColumn('gallery_id', 'Galerie');
         $this->addColumn('public', 'Veřejný');
-//		$this->setFilterFactory([$this, 'gridFilterFactory']);
 
-        $this->addColumn('name', 'Název');
 
         $this->addRowAction('edit', 'Upravit', static function () {});
         $this->addRowAction('delete', 'Smazat', static function (ActiveRow $record) {

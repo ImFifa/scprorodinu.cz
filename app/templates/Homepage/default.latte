@@ -1,22 +1,68 @@
 {block content}
 
-<header></header>
+<header>
+    {if ($headerImages != NULL && $headerImagesCount != NULL)}
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {for $i = 0; $i < 4; $i++}
+                <li data-target="#carouselExampleCaptions" data-slide-to="{$i}" {if ($i == 0)}class="active"{/if}></li>
+            {/for}
+        </ol>
+        <div class="carousel-inner">
+
+            {foreach $headerImages as $headerImage}
+                <div class="carousel-item {if ($iterator->first)}active{/if}">
+                     <img src="{$basePath}/upload/galleries/2/{$headerImage->name}" class="d-block w-100" alt="{$headerImage->title}">
+
+                        {if ($headerImage->title != NULL || $headerImage->description != NULL)}
+                        <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption-inner">
+                            <img src="{$basePath}/dist/img/logo.png" class="lazyload img-fluid" alt="Sociální centrum pro rodinu">
+                            <div class="carousel-content">
+                                {if ($headerImage->url != NULL && !empty($headerImage->url))}
+                                    <a href="{$headerImage->url}"><h4>{$headerImage->title} <i class="fas fa-link"></i></h4></a>
+                                {else}
+                                    <h4>{$headerImage->title}</h4>
+                                {/if}
+                                <p>{$headerImage->description}</p>
+                            </div>
+                            </div>
+                        </div>
+                        {/if}
+                </div>
+            {/foreach}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {else}
+        <img src="{$basePath}/dist/img/header_bg;jpg" class="fullsize" alt="Sociální centrum pro rodinu">
+    {/if}
+</header>
 <section class="about" id="about">
     <div class="container">
         <h2>O nás</h2>
-        {box o-nas}
+        <div class="about-text">
+            {box o-nas}
+        </div>
     </div>
 </section>
 
 <section class="featured" id="featured">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row justify-content-between">
+            <div class="col-lg-5 box">
                 <h2>Klíčenka</h2>
                 {box klicenka}
                 <a n:href="Service:show klicenka" class="btn btn-primary">Detail služby</a>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-5 box">
                 <h2>Poradna</h2>
                 {box poradna}
                 <a n:href="Service:show poradna" class="btn btn-primary">Detail služby</a>
@@ -25,23 +71,32 @@
     </div>
 </section>
 
+{if (!empty($images))}
 <section class="gallery" id="gallery">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">fotografie1</div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">fotografie2</div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">fotografie3</div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">fotografie4</div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">fotografie5</div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">fotografie6</div>
+    <div class="container-fluid">
+        <h2>Fotogalerie</h2>
+        <div class="row no-gutters">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 sc-logo">
+                <img src="{$basePath}/dist/img/logo.png" class="lazyload img-fluid" alt="Sociální centrum pro rodinu">
+            </div>
+        {foreach $images as $image}
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <a href="{$basePath}/upload/galleries/1/{$image->name}" class="col-xsm-6 col-lg-4 col-xl-3 col-xml-2" data-lightbox="gallery" data-title="{$image->title}">
+                    <img data-src="{$basePath}/upload/galleries/1/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
+                </a>
+            </div>
+        {/foreach}
         </div>
     </div>
 </section>
+{/if}
 
 <section class="without-debts" id="without-debts">
     <div class="container">
-        <h2>Projekt Žatec bez dluhů</h2>
-        <img src="{$basePath}/dist/img/eu_logo.jpg" alt="EU logo" class="img-fluid">
-        {box zatec-bez-dluhu}
+        <div class="without-debts-text">
+            <h2>Projekt Žatec bez dluhů</h2>
+            <img src="{$basePath}/dist/img/eu_logo.jpg" alt="EU logo" class="img-fluid">
+            {box zatec-bez-dluhu}
+        </div>
     </div>
 </section>

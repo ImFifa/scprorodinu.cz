@@ -1,2 +1,32 @@
 {block content}
-<h1 n:block=title>Podporují nás</h1>
+<section class="sponsors-page" id="sponsors-page">
+    <div class="container">
+        <h1 n:block=title>Podporují nás</h1>
+        <hr>
+        {box sponsors}
+
+        {if (!empty($images))}
+            <div class="row sponsor-gallery">
+                {foreach $images as $image}
+                    {if ($image->url != NULL)}
+                        <a href="{$image->url}">
+                            <div class="col-xsm-6 col-lg-4 col-xl-3 col-xml-2">
+                            <img data-src="{$basePath}/upload/galleries/5/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
+                            {if ($image->title != NULL)}
+                                <h5>{$image->title}</h5>
+                            {/if}
+                            </div>
+                        </a>
+                    {else}
+                        <div class="col-xsm-6 col-lg-4 col-xl-3 col-xml-2">
+                        <img data-src="{$basePath}/upload/galleries/5/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
+                        {if ($image->title != NULL)}
+                            <h5>{$image->title}</h5>
+                        {/if}
+                        </div>
+                    {/if}
+                {/foreach}
+            </div>
+        {/if}
+    </div>
+</section>

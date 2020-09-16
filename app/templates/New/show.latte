@@ -1,2 +1,34 @@
 {block content}
-<h1 n:block=title>Aktualita</h1>
+
+<section class="new-page" id="new-page">
+    <div class="container">
+        <h1 n:block="title">{$new->title}</h1>
+        <span>{$new->created|date:'d. m. Y'}</span>
+        <hr>
+        <div class="content">
+            {$new->content|noescape}
+        </div>
+
+        <div n:if="$new->gallery_id != NULL" class="galerie">
+            <h3 id="galerie">Galerie</h3>
+
+            <div class="row no-gutters">
+                {foreach $images as $image}
+                    {if $iterator->counter < 5}
+                        <a href="{$basePath}/upload/galleries/{$new->gallery_id}/{$image->name}" class="col-xsm-6 gal-img col-lg-3" data-lightbox="gallery" data-title="{$image->title}">
+                            <img data-src="{$basePath}/upload/galleries/{$new->gallery_id}/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
+                            <div n:if="$iterator->counter === 4" class="n-of-photos">{count($images) - 3}
+                                <small>{if count($images) <= 7}další fotografie{else}dalších fotografií{/if}</small>
+                            </div>
+                        </a>
+                    {else}
+                        <a href="{$basePath}/upload/galleries/{$new->gallery_id}/{$image->name}" data-lightbox="gallery" data-title="{$image->title}"></a>
+                    {/if}
+                {/foreach}
+            </div>
+        </div>
+
+
+        <a n:href="New:" class="btn btn-primary">Zpět na novinky</a>
+    </div>
+</section>

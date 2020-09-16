@@ -16,16 +16,10 @@
                 {snippet cover}
                     {form eventForm}
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-8">
                                 <div class="form-group">
                                     {label name}{/label}
                                     {input name class => 'form-control'}
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    {label gallery_id}{/label}
-                                    {input gallery_id class => 'form-control'}
                                 </div>
                             </div>
 
@@ -35,6 +29,22 @@
                                     {input date class => 'form-control form-date'}
                                 </div>
                             </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    {label category_id}{/label}
+                                    {input category_id class => 'form-control'}
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    {label gallery_id}{/label}
+                                    {input gallery_id class => 'form-control'}
+                                </div>
+                            </div>
+
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     {label image}{/label}

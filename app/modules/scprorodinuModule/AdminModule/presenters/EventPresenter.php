@@ -44,11 +44,11 @@ class EventPresenter extends BaseScprorodinuPresenter
             ->addRule(Form::MAX_LENGTH, 'Maximálné délka je %s znaků', 150)
             ->setRequired('Musíte uvést jméno události');
 
-        $form->addText('date', 'Datum')
+        $form->addText('date', 'Datum konání')
             ->setDefaultValue((new DateTime())->format('j.n.Y'))
-            ->setRequired('Musíte uvést datum událost');
+            ->setRequired('Musíte uvést datum události');
 
-        $form->addUpload('image', 'Nahrát obrázek novinky');
+        $form->addUpload('image', 'Nahrát náhledový obrázek události');
 
         $form->addCheckbox('public', 'Veřejný článek')
             ->setDefaultValue(true);
@@ -56,6 +56,10 @@ class EventPresenter extends BaseScprorodinuPresenter
         $form->addSelect('gallery_id', 'Připojit galerii')
             ->setPrompt('Žádná')
             ->setItems($this->repository->gallery->getForSelect());
+
+        $form->addSelect('category_id', 'Kategorie')
+            ->setPrompt('Žádná')
+            ->setItems($this->repository->getServicesForSelect());
 
         $form->addTextArea('content', 'Popis', 100, 25)
             ->setHtmlAttribute('class', 'form-wysiwyg');

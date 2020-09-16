@@ -1,2 +1,21 @@
 {block content}
-<h1 n:block=title>Pěstounská péče</h1>
+<section class="foster-care-page" id="foster-care-page">
+    <div class="container">
+        <h1 n:block=title>Pěstounská péče</h1>
+        <hr>
+        {box foster-care}
+
+
+        {if (!empty($images))}
+            <div class="row pt-4">
+                {foreach $images as $image}
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 py-3">
+                        <a href="{$basePath}/upload/galleries/3/{$image->name}" class="col-xsm-6 col-lg-4 col-xl-3 col-xml-2" data-lightbox="gallery" data-title="{$image->title}">
+                            <img data-src="{$basePath}/upload/galleries/3/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
+                        </a>
+                    </div>
+                {/foreach}
+            </div>
+        {/if}
+    </div>
+</section>
