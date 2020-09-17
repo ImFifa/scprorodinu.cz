@@ -4,19 +4,18 @@
         <h1 n:block="title">Události</h1>
         <hr>
         {foreach $events as $event}
-            <a n:href="Event:show $event->slug">
-                <div class="new hover14">
-                    {if isset($event->cover)}
-                        <figure><img src="{$basePath}/upload/events/{$event->id}/image.jpg" class="lazyload img-fluid" alt="{$event->name}"></figure>
-                    {/if}
-                    <div class="content">
-                        <i class="date">{$event->date|date:'d. m. Y'}</i>
-                        <h3>{$event->name}</h3>
-                        <p class="new-content">{$event->content|noescape|truncate:350, '...'}</p>
-                    </div>
-                </div>
+            <a n:href="Event:show $event->slug" class="event">
+                {if isset($event->cover)}
+                    <figure><img src="{$basePath}/upload/events/{$event->id}/{$event->cover}" class="lazyload" alt="{$event->name}"></figure>
+                {/if}
+                <span class="desc">
+                    <h3>{$event->name}</h3>
+                    <span>Datum konání: {$event->date|date:'d. m. Y'}</span>
+                    <span>Místo: {$event->location}</span>
+                    <span>Kapacita: {$event->capacity}</span>
+                    <span>Cena: {$event->price}</span>
+                </span>
             </a>
-            <hr>
         {/foreach}
     </div>
 </section>

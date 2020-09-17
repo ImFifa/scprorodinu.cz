@@ -23,6 +23,13 @@ parameters:
 			Aktivity a služby: [':Admin:Service:', hand-heart]
 	customTemplatesDir: %appDir%/templates/
 
+extensions:
+    recaptcha: Contributte\ReCaptcha\DI\ReCaptchaExtension
+
+recaptcha:
+	secretKey: 6LcJk80ZAAAAAAwqoPQx5Eh-jQsGe369TdrMKqTC
+	siteKey: 6LcJk80ZAAAAADOePjyfNQOwF33yDT5uvCSAZujb
+
 migrations:
 	groups:
 		project.structure:

@@ -1,5 +1,5 @@
 {block #title}
-    {$event === null ? 'Přidat událost' : ('Upravit ' . $event->name )}
+    {$event === null ? 'Přidat událost' : ('Upravit ' . $event['name'] )}
 {/block}
 
 {block #buttons}
@@ -27,6 +27,13 @@
                                 <div class="form-group">
                                     {label date}{/label}
                                     {input date class => 'form-control form-date'}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    {label capacity}{/label}
+                                    {input capacity class => 'form-control'}
                                 </div>
                             </div>
 

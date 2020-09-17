@@ -21,6 +21,11 @@ class EventPresenter extends BaseScprorodinuPresenter
 	{
 		$event = $this->repository->event->get($id);
 
+        $event = $event->toArray();
+
+        /** @var DateTime $date */
+        $date = $event['date'];
+        $event['date'] = $date->format('d.m.Y');
 
         /** @var Form $form */
         $form = $this['eventForm'];
@@ -28,6 +33,19 @@ class EventPresenter extends BaseScprorodinuPresenter
 
 		$this->template->event = $event;
 	}
+
+	public function renderParticipants(int $event_id): void
+    {
+        $this->template->event = $this->repository->event->get($event_id);
+        $this->template->participants = $this->repository->participant->getParticipantsForEvent($event_id);
+
+    }
+
+    function handleDeleteParticipant($id)
+    {
+        $this->repository->participant->getTable()->where('id', $id)->delete();
+        $this->redirect('this');
+    }
 
 	protected function createComponentEventGrid(): EventGrid
 	{
@@ -45,8 +63,12 @@ class EventPresenter extends BaseScprorodinuPresenter
             ->setRequired('Musíte uvést jméno události');
 
         $form->addText('date', 'Datum konání')
-            ->setDefaultValue((new DateTime())->format('j.n.Y'))
+            ->setDefaultValue((new DateTime())->format('Y.m.d'))
             ->setRequired('Musíte uvést datum události');
+
+        $form->addInteger('capacity', 'Kapacita')
+            ->setDefaultValue(30)
+            ->setRequired('Musíte uvést maximální kapacitu události');
 
         $form->addUpload('image', 'Nahrát náhledový obrázek události');
 
@@ -83,8 +105,6 @@ class EventPresenter extends BaseScprorodinuPresenter
                 $this->repository->event->get($values['id'])->update($values);
                 $this->flashMessage('Událost upravena', 'success');
             }
-
-            $this->repository->event->get($values['id'])->update(['slug' => $values['id'] . '-' . $values['slug']]);
 
             $link = WWW . '/upload/events/' . $values['id'] . '/';
 

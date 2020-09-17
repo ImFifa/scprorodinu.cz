@@ -2,33 +2,91 @@
 
 <section class="event-page" id="event-page">
     <div class="container">
-        <h1 n:block="name">{$event->name}</h1>
-        <span>{$event->date|date:'d. m. Y'}</span>
-        <hr>
-        <div class="content">
-            {$event->content|noescape}
-        </div>
+        <div class="row event-content no-gutters">
+            <div class="col-lg-8 event-desc">
 
-        <div n:if="$event->gallery_id != NULL" class="galerie">
-            <h3 id="galerie">Galerie</h3>
+                <h1 n:block="name">{$event->name}</h1>
+                <h4>Datum konání: {$event->date|date:'d. m. Y'}</h4>
 
-            <div class="row no-gutters">
-                {foreach $images as $image}
-                    {if $iterator->counter < 5}
-                        <a href="{$basePath}/upload/galleries/{$event->gallery_id}/{$image->name}" class="col-xsm-6 gal-img col-lg-3" data-lightbox="gallery" data-name="{$image->name}">
-                            <img data-src="{$basePath}/upload/galleries/{$event->gallery_id}/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->name}">
-                            <div n:if="$iterator->counter === 4" class="n-of-photos">{count($images) - 3}
-                                <small>{if count($images) <= 7}další fotografie{else}dalších fotografií{/if}</small>
-                            </div>
-                        </a>
+                <h4>Kapacita: {$event->capacity}</h4>
+
+                <h4>Popis události:</h4>
+                {$event->content|noescape}
+
+                <div n:if="$event->gallery_id != NULL" class="galerie">
+                    <h4>Galerie</h4>
+
+                    <div class="row no-gutters">
+                        {foreach $images as $image}
+                            {if $iterator->counter < 5}
+                                <a href="{$basePath}/upload/galleries/{$event->gallery_id}/{$image->name}" class="col-xsm-6 gal-img col-lg-3" data-lightbox="gallery" data-name="{$image->name}">
+                                    <img src="{$basePath}/upload/galleries/{$event->gallery_id}/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->name}">
+                                    <div n:if="$iterator->counter === 4" class="n-of-photos">{count($images) - 3}
+                                        <small>{if count($images) <= 7}další fotografie{else}dalších fotografií{/if}</small>
+                                    </div>
+                                </a>
+                            {else}
+                                <a href="{$basePath}/upload/galleries/{$event->gallery_id}/{$image->name}" data-lightbox="gallery" data-name="{$image->name}"></a>
+                            {/if}
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sign-up-form">
+
+                    {if ($event->capacity - $participantCount > 4)}
+                    <div class="alert alert-success" role="alert">
+                        Stále je <b>{$event->capacity - $participantCount}</b> volných míst!
+                    </div>
+                    {elseif ($event->capacity - $participantCount > 1)}
+                    <div class="alert alert-success" role="alert">
+                        Stále jsou <b>{$event->capacity - $participantCount}</b> volná místa!
+                    </div>
+                    {elseif ($event->capacity - $participantCount > 0)}
+                    <div class="alert alert-success" role="alert">
+                        Stále je <b>{$event->capacity - $participantCount}</b> volné místo!
+                    </div>
                     {else}
-                        <a href="{$basePath}/upload/galleries/{$event->gallery_id}/{$image->name}" data-lightbox="gallery" data-name="{$image->name}"></a>
+                    <div class="alert alert-warning" role="alert">
+                        Kapacita byla kompletně naplněna.
+                    </div>
+
+                        <h4>Na událost se nelze přihlásit</h4>
                     {/if}
-                {/foreach}
+
+                    {if ($event->capacity > $participantCount)}
+                    <h4>Přihlásit se na událost</h4>
+                    {form signUpForm}
+                            {input event_id class => 'form-control input-hidden', value => $event->id}
+                        <div class="form-group">
+                            {label name}{/label}
+                            {input name class => 'form-control'}
+                        </div>
+
+                        <div class="form-group">
+                            {label surname}{/label}
+                            {input surname class => 'form-control'}
+                        </div>
+
+                        <div class="form-group">
+                            {label email}{/label}
+                            {input email class => 'form-control'}
+                        </div>
+
+                        <div class="form-group">
+                            <div n:name="recaptcha"></div>
+                        </div>
+
+                        <div class="form-group">
+                            {input submit class => 'btn btn-primary'}
+                        </div>
+                    {/form}
+                    {/if}
+                </div>
             </div>
         </div>
 
-
-        <a n:href="Event:" class="btn btn-primary">Zpět na události</a>
+        <a n:href="Event:" class="btn btn-outline-info my-5">Zpět na události</a>
     </div>
 </section>

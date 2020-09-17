@@ -3,6 +3,7 @@ import "@theme/front/init.scss";
 import "lightbox2/dist/css/lightbox.css";
 import lightbox from "lightbox2/dist/js/lightbox";
 
+import "./invisibleRecaptcha";
 import "./lazysizes";
 
 import 'bootstrap/js/dist/carousel';
@@ -52,7 +53,7 @@ const $googleMap1 = $('#google-map1');
 const $googleMap2 = $('#google-map2');
 let mapInitialized = false;
 window.addEventListener('load', function() {
-        if ($body.offsetHeight < screen.height && window.location.href.split('/')[3] != 'kontakt' && window.location.href.split('/')[3] != 'podporuji-nas' && window.location.href.split('/')[3] != 'dokumenty') {
+        if ($body.offsetHeight < screen.height - 150 && window.location.href.split('/')[3] != 'kontakt' && window.location.href.split('/')[3] != 'podporuji-nas' && window.location.href.split('/')[3] != 'dokumenty') {
             $footer.style.position = "absolute";
             $footer.style.bottom = "0";
         }

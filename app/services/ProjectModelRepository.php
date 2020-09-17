@@ -6,6 +6,7 @@ use Nette\Database\Table\Selection;
 
 /**
  * @property-read \App\Model\EventModel $event
+ * @property-read \App\Model\ParticipantModel $participant
  * @property-read \App\Model\ServiceModel $service
  * @property-read \App\Model\NewModel $new
  * @property-read \App\Model\GalleryModel $gallery

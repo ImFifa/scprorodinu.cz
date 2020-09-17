@@ -503,7 +503,7 @@ section {
 }
 
 .galerie {
-  margin-top: 60px;
+  margin-top: auto;
 
   .gal-img {
     justify-content: center;
@@ -511,6 +511,7 @@ section {
     padding: 5px;
 
     img {
+      border-radius: .3rem;
       max-height: 250px;
       height: 100%;
       width: 100%;
@@ -637,4 +638,62 @@ footer {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.sign-up-form {
+  padding: 2rem;
+  margin-left: 2rem;
+  border-radius: .3rem;
+  background-color: $white;
+}
+
+.event-content {
+  padding: 2rem;
+  border-radius: .3rem;
+  background-color: rgba($gray-200, .3);
+
+  .event-desc {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.event {
+  color: $black222;
+  transition: .2s ease-in;
+  display: flex;
+  background-color: rgba($gray-200, .3);
+  padding: 1.5rem;
+  border-radius: .3rem;
+  margin-bottom: 2rem;
+
+  img {
+    margin-right: 1.5rem;
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: .3rem;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $primary;
+
+  }
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-top: .2rem;
+    }
+  }
+}
+
+.input-hidden {
+  display: none;
 }

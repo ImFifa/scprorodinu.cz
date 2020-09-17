@@ -8,7 +8,13 @@
 
 {define body-cell-updated}
     <td class="text-right">
-        {$record->date|date:'d.m.Y'}
+        {$record->date|date:'d .m. Y'}
+    </td>
+{/define}
+
+{define body-cell-capacity}
+    <td>
+        {$record->capacity} <a href="{plink :Admin:Event:participants $record->id}" class="ml-2">Seznam přihlášených</a>
     </td>
 {/define}
 

@@ -76,8 +76,6 @@ class ServicePresenter extends BaseScprorodinuPresenter
                 $this->flashMessage('Aktivita/služba upravena', 'success');
             }
 
-            $this->repository->service->get($values['id'])->update(['slug' => $values['id'] . '-' . $values['slug']]);
-
             $link = WWW . '/upload/services/' . $values['id'] . '/';
 
             if (Helpers::isValidImage($file)) {
