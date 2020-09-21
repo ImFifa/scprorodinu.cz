@@ -3,7 +3,6 @@ import "@theme/front/init.scss";
 import "lightbox2/dist/css/lightbox.css";
 import lightbox from "lightbox2/dist/js/lightbox";
 
-import "./invisibleRecaptcha";
 import "./lazysizes";
 
 import 'bootstrap/js/dist/carousel';
@@ -57,6 +56,7 @@ window.addEventListener('load', function() {
             $footer.style.position = "absolute";
             $footer.style.bottom = "0";
         }
+
         $googleMap1.attr('src', $googleMap1.data('src'));
         $googleMap2.attr('src', $googleMap2.data('src'));
         mapInitialized = true;

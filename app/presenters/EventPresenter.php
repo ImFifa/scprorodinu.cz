@@ -15,7 +15,7 @@ final class EventPresenter extends BasePresenter
 
     public function renderDefault(): void
     {
-        $this->template->events = $this->repository->event->getPublicEvents();
+        $this->template->events = $this->repository->event->getUpcomingPublicEvents();
     }
 
     public function renderShow($slug): void

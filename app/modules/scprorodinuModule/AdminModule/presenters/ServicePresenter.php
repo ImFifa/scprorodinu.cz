@@ -106,7 +106,7 @@ class ServicePresenter extends BaseScprorodinuPresenter
     {
         /** @var ActiveRow $image */
         $service = $this->repository->service->get($newId);
-        unlink(WWW . '/upload/events/' . $service->id . '/' . $service->cover);
+        unlink(WWW . '/upload/services/' . $service->id . '/' . $service->cover);
         $service->update(['cover' => null]);
         $this->flashMessage('Náhledový obrázek byl smazán', 'success');
         $this->redirect('this');

@@ -63,7 +63,7 @@ class EventPresenter extends BaseScprorodinuPresenter
             ->setRequired('Musíte uvést jméno události');
 
         $form->addText('date', 'Datum konání')
-            ->setDefaultValue((new DateTime())->format('Y.m.d'))
+            ->setDefaultValue((new DateTime())->format('j.n.Y'))
             ->setRequired('Musíte uvést datum události');
 
         $form->addInteger('capacity', 'Kapacita')
@@ -90,6 +90,7 @@ class EventPresenter extends BaseScprorodinuPresenter
 
         $form->onSubmit[] = function (Form $form) {
             $values = $form->getValues(true);
+            $values['date'] = date_create_from_format('j.n.Y', $values['date'])->setTime(0, 0, 0);
             $values['slug'] = Strings::webalize($values['name']);
 
 

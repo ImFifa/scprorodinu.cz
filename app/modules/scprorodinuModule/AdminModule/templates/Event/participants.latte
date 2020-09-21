@@ -26,7 +26,7 @@
                 <th scope="row">{$iterator->counter}</th>
                 <td>{$participant->name} {$participant->surname}</td>
                 <td>{$participant->email}</td>
-                <td><a n:href="deleteParticipant! $participant->id" class="btn btn-danger">X</a></td>
+                <td><a data-ajax="on" n:href="deleteParticipant! $participant->id" class="btn btn-sm btn-outline-danger tw-ajax" data-confirm="modal">X</a></td>
             </tr>
         {/foreach}
             </tbody>

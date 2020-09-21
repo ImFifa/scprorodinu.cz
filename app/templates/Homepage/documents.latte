@@ -12,7 +12,7 @@
                 {foreach $allFiles as $document}
                     {if $document->folder_id === $folder->id}
                         <li>
-                            <a target="_blank" href="{$basePath}/upload/files/{$folder->slug}/{$document->path}" class="btn btn-outline-secondary">
+                            <a target="_blank" href="{$basePath}/upload/files/{$folder->slug}/{$document->path}" class="btn btn-outline-info">
                                 <i class="fas fa-file{if ($document->type === 'pdf')}-pdf{/if}"></i> {$document->name}
                             </a>
                         </li>

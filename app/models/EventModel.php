@@ -20,6 +20,12 @@ class EventModel extends BaseModel
         return $this->getTable()->where('public', 1)->order('id DESC');
     }
 
+    public function getUpcomingPublicEvents(): Selection
+    {
+        $date = date("Y-m-d");
+        return $this->getTable()->where('public', 1)->where('date >', $date)->order('date ASC');
+    }
+
     public function getPublicEventsCount(): int
     {
         return $this->getPublicEvents()->count();

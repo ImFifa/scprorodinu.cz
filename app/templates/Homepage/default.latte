@@ -65,7 +65,7 @@
             <div class="col-lg-5 box">
                 <h2>Poradna</h2>
                 {box poradna}
-                <a n:href="Service:show poradna" class="btn btn-primary">Detail služby</a>
+                <a n:href="Service:show poradenstvi-uzavirani-dohod-vzdelavani" class="btn btn-primary">Detail služby</a>
             </div>
         </div>
     </div>
@@ -76,13 +76,10 @@
     <div class="container-fluid">
         <h2>Fotogalerie</h2>
         <div class="row no-gutters">
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 sc-logo">
-                <img src="{$basePath}/dist/img/logo.png" class="lazyload img-fluid" alt="Sociální centrum pro rodinu">
-            </div>
         {foreach $images as $image}
             <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
                 <a href="{$basePath}/upload/galleries/1/{$image->name}" class="col-xsm-6 col-lg-4 col-xl-3 col-xml-2" data-lightbox="gallery" data-title="{$image->title}">
-                    <img data-src="{$basePath}/upload/galleries/1/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
+                    <img src="{$basePath}/upload/galleries/1/thumbs/{$image->name}" class="lazyload img-fluid" alt="{$image->title}">
                 </a>
             </div>
         {/foreach}

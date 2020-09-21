@@ -353,15 +353,6 @@ section {
       padding: 0;
     }
   }
-  .sc-logo {
-    background-color: $gray-300;
-    user-select: none;
-
-    img {
-      padding: 1.5rem;
-      object-fit: contain;
-    }
-  }
 
   h2 {
     text-align: center;
@@ -472,7 +463,7 @@ section {
       h3 {
 
 
-        color: $secondary;
+        color: $cyan;
       }
     }
   }
@@ -696,4 +687,13 @@ footer {
 
 .input-hidden {
   display: none;
+}
+
+.services-page {
+  .service-img {
+    max-width: 150px;
+    padding: 1rem 1rem 0 1rem;
+    height: auto;
+    margin: 0 auto;
+  }
 }

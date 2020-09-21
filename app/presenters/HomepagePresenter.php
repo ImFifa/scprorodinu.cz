@@ -24,8 +24,7 @@ final class HomepagePresenter extends BasePresenter
     {
         $this->template->images = $this->images->getImagesByGallery(1);
         $this->template->headerImages = $this->images->getImagesByGallery(2);
-        $this->template->headerImagesCount = 4;
-        bdump($this->template->headerImagesCount);
+        $this->template->headerImagesCount = count($this->template->headerImages);
     }
 
     public function renderFosterCare(): void

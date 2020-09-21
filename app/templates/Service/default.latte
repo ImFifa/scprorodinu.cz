@@ -3,19 +3,20 @@
     <div class="container">
         <h1 n:block="title">Aktivity a služby pro veřejnost</h1>
         <hr>
+        <div class="row">
         {foreach $services as $service}
-            <a n:href="Service:show $service->slug">
-                <div class="new hover14">
-                    {if isset($service->cover)}
-                        <figure><img src="{$basePath}/upload/services/{$service->id}/{$service->cover}" class="lazyload img-fluid" alt="{$service->name}"></figure>
-                    {/if}
-                    <div class="content">
-                        <h3>{$service->name}</h3>
-                        <p class="new-content">{$service->content|noescape|truncate:350, '...'}</p>
-                    </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card text-center">
+                {if isset($service->cover)}
+                    <img src="{$basePath}/upload/services/{$service->id}/{$service->cover}" class="lazyload service-img" alt="{$service->name}">
+                {/if}
+                <div class="card-body">
+                    <h4 class="card-title">{$service->name}</h4>
+                    <a n:href="Service:show $service->slug" class="btn btn-primary">Zobrazit více</a>
                 </div>
-            </a>
-            <hr>
+            </div>
+            </div>
         {/foreach}
+        </div>
     </div>
 </section>
