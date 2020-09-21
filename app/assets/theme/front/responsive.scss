@@ -3,8 +3,6 @@
   nav {
     .top-line {
       .navbar-brand {
-        margin-right: 5rem;
-
         .menu-title {
           span {
             display: inline-block;
@@ -14,13 +12,35 @@
     }
   }
 
+  .new {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 @include media-breakpoint-up(lg) {
+  .featured {
+    text-align: left;
+  }
+
+  .sign-up-form {
+    margin-left: 2rem;
+  }
+  .event-content {
+    padding: 2rem;
+  }
+
   nav {
     background-color: $white;
 
-    #navbarToggler {
+    .top-line {
+      .navbar-brand {
+        margin-right: 2rem;
+      }
+    }
+
+
+          #navbarToggler {
       display: none;
     }
 

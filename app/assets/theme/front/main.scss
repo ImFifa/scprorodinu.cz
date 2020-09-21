@@ -472,8 +472,7 @@ section {
 
 .new {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
 
   h3 {
     margin: .8rem 0;
@@ -632,14 +631,14 @@ footer {
 }
 
 .sign-up-form {
+  margin-top: 3rem;
   padding: 2rem;
-  margin-left: 2rem;
   border-radius: .3rem;
   background-color: $white;
 }
 
 .event-content {
-  padding: 2rem;
+  padding: .5rem 2rem;
   border-radius: .3rem;
   background-color: rgba($gray-200, .3);
 
@@ -650,6 +649,14 @@ footer {
     h4 {
       margin-top: 1rem;
     }
+  }
+}
+
+.featured {
+  text-align: center;
+
+  ul {
+    text-align: left;
   }
 }
 
@@ -690,10 +697,18 @@ footer {
 }
 
 .services-page {
-  .service-img {
-    max-width: 150px;
-    padding: 1rem 1rem 0 1rem;
-    height: auto;
-    margin: 0 auto;
+
+  .service {
+    padding: 2rem;
+    border-radius: .3rem;
+    background-color: rgba($gray-300, .3);
+
+    .service-img {
+      max-width: 150px;
+      padding: 1rem 1rem 0 1rem;
+      height: auto;
+      margin: 0 auto;
+    }
   }
 }
+

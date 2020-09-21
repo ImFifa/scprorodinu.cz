@@ -6,14 +6,12 @@
         <div class="row">
         {foreach $services as $service}
             <div class="col-lg-4 col-md-6 mb-5">
-            <div class="card text-center">
+            <div class="service text-center">
                 {if isset($service->cover)}
                     <img src="{$basePath}/upload/services/{$service->id}/{$service->cover}" class="lazyload service-img" alt="{$service->name}">
                 {/if}
-                <div class="card-body">
                     <h4 class="card-title">{$service->name}</h4>
                     <a n:href="Service:show $service->slug" class="btn btn-primary">Zobrazit více</a>
-                </div>
             </div>
             </div>
         {/foreach}
