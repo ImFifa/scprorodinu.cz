@@ -3,8 +3,8 @@ import "@theme/front/init.scss";
 import "lightbox2/dist/css/lightbox.css";
 import lightbox from "lightbox2/dist/js/lightbox";
 
-import 'vendor/nette/forms/src/assets/netteForms.min';
-import 'vendor/contributte/recaptcha/assets/invisibleRecaptcha.min';
+import '../../../vendor/nette/forms/src/assets/netteForms.min';
+import '../../../vendor/contributte/recaptcha/assets/invisibleRecaptcha.min';
 
 import "./lazysizes";
 
