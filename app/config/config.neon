@@ -23,9 +23,6 @@ parameters:
 			Aktivity a služby: [':Admin:Service:', hand-heart]
 	customTemplatesDir: %appDir%/templates/
 
-extensions:
-    recaptcha: Contributte\ReCaptcha\DI\ReCaptchaExtension
-
 migrations:
 	groups:
 		project.structure:

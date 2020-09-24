@@ -29,10 +29,7 @@ final class EventPresenter extends BasePresenter
 
     protected function createComponentSignUpForm(): Form
     {
-
         $form = new Form();
-
-        $form->addReCaptcha('recaptcha', $label = 'Captcha', $required = TRUE, $message = 'Are you a bot?');
 
         $form->addHidden('id');
 
@@ -50,12 +47,13 @@ final class EventPresenter extends BasePresenter
             ->addRule(Form::MAX_LENGTH, 'Maximálné délka je %s znaků', 120)
             ->setRequired('Musíte uvést Vaši emailovou adresu');
 
+        $form->addInvisibleReCaptcha('recaptcha')
+            ->setMessage('Jste opravdu člověk?');
+
         $form->addSubmit('submit', 'Odeslat přihlášku');
 
         $form->onSubmit[] = function (Form $form) {
             $values = $form->getValues(true);
-
-            bdump($values);
 
             if ($values['id'] === '') {
                 unset($values['id']);
