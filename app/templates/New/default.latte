@@ -3,6 +3,8 @@
     <div class="container">
         <h1 n:block="title">Aktuality</h1>
         <hr>
+        {if count($news) > 0}
+        <div class="news-list">
         {foreach $news as $new}
             <a n:href="New:show $new->slug">
                 <div class="new hover14">
@@ -12,11 +14,34 @@
                     <div class="content">
                         <i class="date">{$new->created|date:'d. m. Y'}</i>
                         <h3>{$new->title}</h3>
-                        <p class="new-content">{$new->content|noescape|truncate:350, '...'}</p>
+                        <p class="new-content">{$new->perex|stripHtml|noescape}</p>
                     </div>
                 </div>
             </a>
             <hr>
         {/foreach}
+        </div>
+
+        <div class="pagination">
+            {if !$paginator->isFirst()}
+                <a n:href="default, 1">První</a>
+                &nbsp;|&nbsp;
+                <a n:href="default, $paginator->page-1">Předchozí</a>
+                &nbsp;|&nbsp;
+            {/if}
+
+            Stránka {$paginator->page} z {$paginator->pageCount}
+
+            {if !$paginator->isLast()}
+                &nbsp;|&nbsp;
+                <a n:href="default, $paginator->page+1">Další</a>
+                &nbsp;|&nbsp;
+                <a n:href="default, $paginator->pageCount">Poslední</a>
+            {/if}
+        </div>
+
+        {else}
+            <h4>Na webu aktuálně nejsou žádné zveřejněné aktuality.</h4>
+        {/if}
     </div>
 </section>

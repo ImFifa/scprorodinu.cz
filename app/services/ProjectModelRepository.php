@@ -15,14 +15,14 @@ use Nette\Database\Table\Selection;
 class ProjectModelRepository extends ModelRepository
 {
 
-    public function findPublicNews(int $limit, int $offset): Selection
+    public function getPublicNews(string $lang, int $limit, int $offset): Selection
     {
-        return $this->new->getTable()->where('public', 1)->order('id DESC')->limit($limit, $offset);
+        return $this->new->getTable()->where('public', 1)->where('lang', $lang)->order('created DESC')->limit($limit, $offset);
     }
 
-    public function getPublicNewsCount(): int
+    public function getPublicNewsCount(string $lang): int
     {
-        return $this->new->getTable()->where('public', 1)->count();
+        return $this->new->getTable()->where('public', 1)->where('lang', $lang)->order('created DESC')->count();
     }
 
     public function getServicesForSelect(): array

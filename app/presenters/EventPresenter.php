@@ -6,6 +6,7 @@ namespace App\ProjectModule\Presenters;
 
 use App\Model\ImageModel;
 use Nette\Application\UI\Form;
+use Nette\Utils\Paginator;
 
 final class EventPresenter extends BasePresenter
 {
@@ -13,14 +14,28 @@ final class EventPresenter extends BasePresenter
     /** @var ImageModel @inject */
     public $images;
 
-    public function renderDefault(): void
+    public function renderDefault(int $page = 1): void
     {
-        $this->template->events = $this->repository->event->getUpcomingPublicEvents();
+        $eventsCount = $this->repository->event->getUpcomingPublicEventsCount();
+
+        $paginator = new Paginator;
+        $paginator->setPage($page); // číslo aktuální stránky
+        $paginator->setItemsPerPage(5); // počet položek na stránce
+        $paginator->setItemCount($eventsCount); // celkový počet položek, je-li znám
+
+
+        $this->template->events = $this->repository->event->getUpcomingPublicEvents($paginator->getLength(), $paginator->getOffset());
+        $this->template->paginator = $paginator;
     }
 
     public function renderShow($slug): void
     {
         $this->template->event = $this->repository->event->getEvent($slug);
+
+        if ($this->template->event === NULL) {
+            $this->error();
+        }
+
         $this->template->participantCount = $this->repository->participant->getParticipantsForEventCount($this->template->event->id);
 
         if ($this->template->event->gallery_id != NULL)

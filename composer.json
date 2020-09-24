@@ -35,7 +35,8 @@
 		"nette/mail": "^3.1",
 		"nette/database": "^3.0",
 		"contributte/facebook": "^0.3.0",
-		"contributte/recaptcha": "^3.3.1"
+		"contributte/recaptcha": "^3.3.1",
+		"nette/utils": "^3.1"
 	},
 	"config": {
 		"platform": {

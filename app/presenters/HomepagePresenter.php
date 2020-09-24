@@ -27,6 +27,11 @@ final class HomepagePresenter extends BasePresenter
         $this->template->headerImagesCount = count($this->template->headerImages);
     }
 
+    public function renderNew($slug): void
+    {
+        $this->forward('New:show', $slug);
+    }
+
     public function renderFosterCare(): void
     {
         $this->template->images = $this->images->getImagesByGallery(3);

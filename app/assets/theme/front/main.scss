@@ -452,20 +452,20 @@ section {
 
 
 // NEWS
-.news, .news-page {
-  a:not(.btn) {
-    color: unset;
-    transition: .1s ease-in;
+.news-list, .events-list {
+    a:not(.btn):not(.pagination) {
+      color: unset;
+      transition: .1s ease-in;
 
-    &:hover {
-      text-decoration: none;
+      &:hover {
+        text-decoration: none;
 
-      h3 {
+        h3 {
 
 
-        color: $cyan;
+          color: $cyan;
+        }
       }
-    }
   }
 
 }

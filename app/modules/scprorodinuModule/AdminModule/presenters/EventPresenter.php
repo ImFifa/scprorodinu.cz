@@ -19,19 +19,24 @@ class EventPresenter extends BaseScprorodinuPresenter
 
     public function renderEdit(?int $id): void
 	{
-		$event = $this->repository->event->get($id);
 
-        $event = $event->toArray();
+        /** @var ActiveRow $event */
+        if ($id !== null && $event = $this->repository->event->get($id)) {
 
-        /** @var DateTime $date */
-        $date = $event['date'];
-        $event['date'] = $date->format('d.m.Y');
+            $event = $event->toArray();
 
-        /** @var Form $form */
-        $form = $this['eventForm'];
-        $form->setDefaults($event);
+            /** @var DateTime $date */
+            $date = $event['date'];
+            $event['date'] = $date->format('d.m.Y');
 
-		$this->template->event = $event;
+            /** @var Form $form */
+            $form = $this['eventForm'];
+            $form->setDefaults($event);
+
+            $this->template->event = $event;
+        } else {
+            $this->template->event = null;
+        }
 	}
 
 	public function renderParticipants(int $event_id): void

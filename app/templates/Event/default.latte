@@ -3,19 +3,44 @@
     <div class="container">
         <h1 n:block="title">Události</h1>
         <hr>
-        {foreach $events as $event}
-            <a n:href="Event:show $event->slug" class="event">
-                {if isset($event->cover)}
-                    <figure><img src="{$basePath}/upload/events/{$event->id}/{$event->cover}" class="lazyload" alt="{$event->name}"></figure>
+        {if count($events) > 0}
+            <div class="events-list">
+            {foreach $events as $event}
+                <a n:href="Event:show $event->slug" class="event">
+                    {if isset($event->cover)}
+                        <figure><img src="{$basePath}/upload/events/{$event->id}/{$event->cover}" class="lazyload" alt="{$event->name}"></figure>
+                    {/if}
+                    <span class="desc">
+                        <h3>{$event->name}</h3>
+                        <span>Datum konání: {$event->date|date:'d. m. Y'}</span>
+                        <span>Místo: {$event->location}</span>
+                        <span>Kapacita: {$event->capacity}</span>
+                        <span>Cena: {$event->price}</span>
+                    </span>
+                </a>
+            {/foreach}
+            </div>
+
+            <div class="pagination">
+                {if !$paginator->isFirst()}
+                    <a n:href="default, 1">První</a>
+                    &nbsp;|&nbsp;
+                    <a n:href="default, $paginator->page-1">Předchozí</a>
+                    &nbsp;|&nbsp;
                 {/if}
-                <span class="desc">
-                    <h3>{$event->name}</h3>
-                    <span>Datum konání: {$event->date|date:'d. m. Y'}</span>
-                    <span>Místo: {$event->location}</span>
-                    <span>Kapacita: {$event->capacity}</span>
-                    <span>Cena: {$event->price}</span>
-                </span>
-            </a>
-        {/foreach}
+
+                Stránka {$paginator->page} z {$paginator->pageCount}
+
+                {if !$paginator->isLast()}
+                    &nbsp;|&nbsp;
+                    <a n:href="default, $paginator->page+1">Další</a>
+                    &nbsp;|&nbsp;
+                    <a n:href="default, $paginator->pageCount">Poslední</a>
+                {/if}
+            </div>
+
+        {else}
+            <h4>Na webu aktuálně nejsou žádné zveřejněné události.</h4>
+        {/if}
     </div>
 </section>

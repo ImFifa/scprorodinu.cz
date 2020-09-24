@@ -34,11 +34,11 @@ class RouterFactory
 
 
         // services and activities
-        $project[] = new Route('[<lang=cs [a-z]{1}>/]aktuality', 'New:default');
-        $project[] = new Route('[<lang=cs [a-z]{1}>/]aktuality/<slug>', 'New:show');
+        $project[] = new Route('[<lang=cs [a-z]{1}>/]aktuality[/<page>]', 'New:default');
+        $project[] = new Route('[<lang=cs [a-z]{1}>/]aktualita/<slug>', 'New:show');
         // services and activities
-        $project[] = new Route('[<lang=cs [a-z]{1}>/]udalosti', 'Event:default');
-        $project[] = new Route('[<lang=cs [a-z]{1}>/]udalosti/<slug>', 'Event:show');
+        $project[] = new Route('[<lang=cs [a-z]{1}>/]udalosti[/<page>]', 'Event:default');
+        $project[] = new Route('[<lang=cs [a-z]{1}>/]udalost/<slug>', 'Event:show');
         // services and activities
         $project[] = new Route('[<lang=cs [a-z]{1}>/]aktivity-a-sluzby', 'Service:default');
         $project[] = new Route('[<lang=cs [a-z]{1}>/]aktivity-a-sluzby/<slug>', 'Service:show');
