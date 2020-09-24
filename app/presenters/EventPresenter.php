@@ -72,8 +72,13 @@ final class EventPresenter extends BasePresenter
 
             if ($values['id'] === '') {
                 unset($values['id']);
+
+                // add participant to the event
+                $this->repository->event->getTable()->where('id', $values['event_id'])->update(['participants' => new \Nette\Database\SqlLiteral('participants + 1')]);
+                // insert participant to participants table
                 $values['id'] = $this->repository->participant->insert($values)->id;
                 $this->flashMessage('Přihláška úspěšně odeslána', 'success');
+
             } else {
                 $this->flashMessage('Přihlášku se nepodařilo odeslat', 'danger');
             }

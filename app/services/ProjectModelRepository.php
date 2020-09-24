@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Nette\Database\Table\ActiveRow;
 use Nette\Database\Table\Selection;
 
 /**
@@ -28,6 +29,15 @@ class ProjectModelRepository extends ModelRepository
     public function getServicesForSelect(): array
     {
         return $this->service->getTable()->fetchPairs('id', 'name');
+    }
 
+    public function getEventParticipantsCount(int $id): int
+    {
+        return $this->participant->getTable()->where('id', $id)->count();
+    }
+
+    public function getParticipant(int $id): ActiveRow
+    {
+        return $this->participant->getTable()->where('id', $id)->fetch();
     }
 }

@@ -17,7 +17,7 @@ class EventGrid extends BaseGrid
 
         $this->addColumn('name', 'Název');
         $this->addColumn('date', 'Datum konání');
-        $this->addColumn('capacity', 'Kapacita');
+        $this->addColumn('capacity', 'Přihlášeno/Kapacita');
         $this->addColumn('gallery_id', 'Galerie');
         $this->addColumn('public', 'Veřejný');
 

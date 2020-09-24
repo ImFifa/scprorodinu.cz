@@ -14,7 +14,7 @@
 
 {define body-cell-capacity}
     <td>
-        {$record->capacity} <a href="{plink :Admin:Event:participants $record->id}" class="ml-2">Seznam přihlášených</a>
+        {$record->participants}/{$record->capacity} <a href="{plink :Admin:Event:participants $record->id}" class="ml-2">Seznam přihlášených</a>
     </td>
 {/define}
 

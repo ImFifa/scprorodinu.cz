@@ -7,6 +7,7 @@ use App\Grid\IEventGridFactory;
 use DateTime;
 use Nette\Application\UI\Form;
 use App\Service\Helpers;
+use Nette\Database\SqlLiteral;
 use Nette\Database\Table\ActiveRow;
 use Nette\Http\FileUpload;
 use Nette\Utils\Strings;
@@ -48,7 +49,9 @@ class EventPresenter extends BaseScprorodinuPresenter
 
     function handleDeleteParticipant($id)
     {
+        $event_id = $this->repository->getParticipant($id)->event_id;
         $this->repository->participant->getTable()->where('id', $id)->delete();
+        $this->repository->event->getTable()->where('id', $event_id)->update(['participants' => new SqlLiteral('participants - 1')]);
         $this->redirect('this');
     }
 
