@@ -6,15 +6,20 @@
             <div class="col-lg-8 event-desc">
 
                 <h1 n:block="name">{$event->name}</h1>
-                <h4>Datum konání: {$event->date|date:'d. m. Y'}</h4>
+                <h5><small>Datum konání:</small> {$event->date|date:'d. m. Y'}</h5>
 
-                <h4>Kapacita: {$event->capacity}</h4>
+                <h5><small>Místo konání:</small> {$event->location}</h5>
 
-                <h4>Popis události:</h4>
+                <h5><small>Cena:</small> {$event->price} {if ($event->price !== 'Zdarma')},- Kč{/if}</h5>
+
+                <h5><small>Kapacita:</small> {$event->capacity}</h5>
+
+                <hr>
+                <h5>Popis události:</h5>
                 {$event->content|noescape}
 
                 <div n:if="$event->gallery_id != NULL" class="galerie">
-                    <h4>Galerie</h4>
+                    <h5>Galerie</h5>
 
                     <div class="row no-gutters">
                         {foreach $images as $image}

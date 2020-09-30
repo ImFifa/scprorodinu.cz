@@ -12,6 +12,12 @@
     </td>
 {/define}
 
+{define body-cell-price}
+    <td class="text-left">
+        {$record->price}
+    </td>
+{/define}
+
 {define body-cell-capacity}
     <td>
         {$record->participants}/{$record->capacity} <a href="{plink :Admin:Event:participants $record->id}" class="ml-2">Seznam přihlášených</a>

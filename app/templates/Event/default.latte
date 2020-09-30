@@ -13,9 +13,9 @@
                     <span class="desc">
                         <h3>{$event->name}</h3>
                         <span>Datum konání: {$event->date|date:'d. m. Y'}</span>
-                        <span>Místo: {$event->location}</span>
+                        <span>Místo konání: {$event->location}</span>
                         <span>Kapacita: {$event->capacity}</span>
-                        <span>Cena: {$event->price}</span>
+                        <span>Cena: {$event->price} {if ($event->price !== 'Zdarma')},- Kč{/if}</span>
                     </span>
                 </a>
             {/foreach}

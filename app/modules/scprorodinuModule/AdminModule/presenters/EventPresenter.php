@@ -74,9 +74,18 @@ class EventPresenter extends BaseScprorodinuPresenter
             ->setDefaultValue((new DateTime())->format('j.n.Y'))
             ->setRequired('Musíte uvést datum události');
 
+
+        $form->addText('location', 'Místo konání')
+            ->setRequired('Musíte uvést místo konání události');
+
+
         $form->addInteger('capacity', 'Kapacita')
             ->setDefaultValue(30)
             ->setRequired('Musíte uvést maximální kapacitu události');
+
+        $form->addText('price', 'Cena (Kč)')
+            ->setDefaultValue(0)
+            ->setRequired('Musíte uvést cenu události');
 
         $form->addUpload('image', 'Nahrát náhledový obrázek události');
 
@@ -100,6 +109,8 @@ class EventPresenter extends BaseScprorodinuPresenter
             $values = $form->getValues(true);
             $values['date'] = date_create_from_format('j.n.Y', $values['date'])->setTime(0, 0, 0);
             $values['slug'] = Strings::webalize($values['name']);
+            if ($values['price'] === '0')
+                $values['price'] = 'Zdarma';
 
 
             /** @var FileUpload $file */
