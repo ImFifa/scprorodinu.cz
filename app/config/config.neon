@@ -10,6 +10,9 @@ session:
 	debugger: true
 	expiration: 14 days
 
+extensions:
+    recaptcha: Contributte\ReCaptcha\DI\ReCaptchaExtension
+
 services:
 	- App\Grid\IEventGridFactory
 	- App\Grid\IServiceGridFactory
